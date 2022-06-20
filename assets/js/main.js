@@ -16,11 +16,20 @@ let dbDrums = 8500;
 let gretsch = 7900;
 let mapex = 6900;
 let continuar = 0;
+let nombre = "";
 
-//Inicio y seleccion de Categoria
+//Declaración de función saludo
 
-alert ("Bienvenido a Rock All, tu tienda de instrumentos musicales");
-let nombre = prompt ("Para comenzar decinos tu nombre");
+function saludo() {
+    alert("Somos Rock All!");
+    let nombre = prompt ("Para comenzar decinos tu nombre");
+  
+    while (nombre === "") {
+      nombre = prompt("Para comenzar decinos tu nombre");
+    }
+    alert("Bienvenido a Rock All " + nombre + ", tu tienda de instrumentos musicales");
+  }
+  saludo();
 
 
 
@@ -132,5 +141,7 @@ let continuar = prompt("¿Deseas seguir comprando?, 1- SI, 2- NO.")
 
 }
 
+
 alert("Gracias por tu visita, vuelve a recargar la pagina para comenzar nuevamente.")
+
 
