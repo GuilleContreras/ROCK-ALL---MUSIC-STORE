@@ -59,8 +59,17 @@ saludo();
   drum.push(gretsch_bateria);
   drum.push(mapex_bateria);
   
-  
+// Compruebo el contenido de los Array "guitar"", "bass" y "drum"
 
+for (const content of guitar){
+    console.log(content.name);
+}
+for (const content of bass){
+    console.log(content.name);
+}
+for (const content of drum){
+    console.log(content.name);
+}
 
 
 
