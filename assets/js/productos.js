@@ -74,4 +74,4 @@ for (const content of drum){
 
 // Defino el array "Carrito"
 
-const carritoDeCompras = []; 
+var carritoDeCompras = []; 
