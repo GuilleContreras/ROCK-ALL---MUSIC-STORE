@@ -6,3 +6,19 @@
     width: 200px;
     padding: 20px;
 }
+
+h1{
+    font-size: 30px;
+}
+
+h2{
+    font-size: 20px;
+}
+
+main{
+    padding: 10px;
+}
+
+.form-control{
+    width: 400px;
+}
