@@ -1,77 +1,64 @@
-//Declaración de objeto constructor de producto
+//Declaración de array de productos
 
-class producto {
-    constructor (nombre, precio, categoria, stock){
-    this.name = nombre;
-    this.price = parseFloat(precio);
-    this.category = categoria;
-    this.stock = stock;
-    this.vendido = false;
-    }
+const productosTodos = [
+    {id:1, nombre:"Fender Stratocaster 70s", precio:545000, descripcion: "Guitarra Fender 70s Stratocaster", categoria: "Guitarras", stock: 10, imagen:"fender_stratocaster70s.png"},
+    {id:2, nombre:"Fender Telecaster 72", precio:538000,descripcion: "Guitarra Fender Telecaster 72 Thinline", categoria: "Guitarras", stock: 10, imagen:"fender_telecaster72.png"},
+    {id:3, nombre:"Taylor BT1", precio:123000,descripcion: "Guitarra Electroacustica BT1 E", categoria: "Guitarras", stock: 10, imagen:"taylor_bt1.png"},
+    {id:4, nombre:"Fender Jazz Bass", precio:91000,descripcion: "Bajo Fender Jazz Bazz American Professional", categoria: "Bajos", stock: 10, imagen:"bajo_fender_jazzbass.png"},
+    {id:5, nombre:"Fender Active Jazz Bass", precio:91000,descripcion: "Bajo Fender Activo Deluxe Jazz Bass", categoria: "Bajos", stock: 10, imagen:"bajo_fender_activo.png"},
+    {id:6, nombre:"Bajo Yamaha BB235", precio:198365,descripcion: "Bajo Yamaha BB235 Broadbass Yellow", categoria: "Bajos", stock: 10, imagen:"bajo_yamaha_235.png"},
+    {id:7, nombre:"Pearl Decade Maple", precio:291730,descripcion: "Bateria Pearl Decade Maple Satin Brown Burst", categoria: "Baterías", stock: 10, imagen:"bateria_pearl.png"},
+    {id:8, nombre:"Gretsch Catalina Maple", precio:463745,descripcion: "Batería De 5 Cuerpos Gretsch Catalina Maple", categoria: "Baterías", stock: 10, imagen:"bateria_gretsch.png"},
+    {id:9, nombre:"Vintage Sonor VT16", precio:545000,descripcion: "Bateria Vintage Sonor VT16 THREE20", categoria: "Baterías", stock: 10, imagen:"bateria_sonor.png"}
+];
 
-    venderProducto() {
-        this.vendido = true;
-    }
+console.log(productosTodos)
+ //Funciones
 
-    fueVendido() {
-        return this.vendido;
-    }
+ function obtenerProductosLs() {
+    return JSON.parse(localStorage.getItem("productosTodos")) || [];
+ }
+
+ function guardarProductosLs(productosTodos) {
+    localStorage.setItem("productosTodos", JSON.stringify(productosTodos)) || [];
+ }
+
+ function buscarProducto(id) {
+   let productos = obtenerProductosLs();
+   return productos.find(x => x.id == id);
+      
 }
 
-//Declaración de Instancias de la clase producto
+ function renderProductos() {
+    let productos = obtenerProductosLs();
+    let contenido = "";
 
-const fenderStratocaster = new producto("Fender Stratocaster", 3000, "guitarra", 10);
-const gibsonlesPaul = new producto("Gibson Les Paul", 4500, "guitarra", 10);
-const fenderTelecaster = new producto("Fender Telecaster", 3500, "guitarra", 10);
-const fenderJazz_bass = new producto("Fender Jazz Bass", 3850, "bajo", 10);
-const gibsonLespaul_bass = new producto("Gibson Les Paul Bass", 4350, "bajo", 10);
-const fenderPresicion_bass = new producto("Fender Presicion Bass", 5600, "bajo", 10);
-const dbDrums_bateria = new producto("Batería dbDrums", 8500, "batería", 10);
-const gretsch_bateria = new producto("Batería Gretsch", 7900, "batería", 10);
-const mapex_bateria = new producto("Batería Mapex", 6900, "batería", 10);
+    for (let producto of productos){
+        contenido +=`<div class="col-md-4 p-2">
+        <div class="card p-2">
+        <img src="assets/img/${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+        <div class="card-body">
+          <h5 class="card-title text-center">${producto.nombre}</h5>
+          <p class="card-text text-center">$${producto.precio}</p>
+          <p class="card-text text-center"><a href="#" class="btn btn-dark" onclick="agregarCarrito(${producto.id})" title="Agregar al Carrito">Agregar</a></p>
+         </div>
+         </div>
+         </div>`
+    }
+    document.getElementById("productos").innerHTML=contenido;
 
- //Declaración de Arrays
+ }
 
- // Array de todos los productos
- const productosTodos = [];
-
- productosTodos.push(fenderStratocaster);
- productosTodos.push(gibsonlesPaul); 
- productosTodos.push(fenderTelecaster); 
- productosTodos.push(fenderJazz_bass);
- productosTodos.push(gibsonLespaul_bass);
- productosTodos.push(fenderPresicion_bass);
- productosTodos.push(dbDrums_bateria);
- productosTodos.push(gretsch_bateria);
- productosTodos.push(mapex_bateria);
-
- // Arrays por categorias
- const categorias = ["Guitarras", "Bajos", "Baterías"];
- const guitar = [];
- guitar.push(fenderStratocaster);
- guitar.push(gibsonlesPaul); 
- guitar.push(fenderTelecaster); 
- const bass = [];
- bass.push(fenderJazz_bass);
- bass.push(gibsonLespaul_bass);
- bass.push(fenderPresicion_bass);
- const drum = [];
- drum.push(dbDrums_bateria);
- drum.push(gretsch_bateria);
- drum.push(mapex_bateria);
  
-// Compruebo el contenido de los Array "guitar"", "bass" y "drum"
-
-for (const content of guitar){
-   console.log(content.name);
-}
-for (const content of bass){
-   console.log(content.name);
-}
-for (const content of drum){
-   console.log(content.name);
+function agregarCarrito (id) {
+   let producto = buscarProducto(id);
+   let productos_carrito = obtenerProductosCarrito();
+   producto.cantidad = 1;
+   productos_carrito.push(producto);
+   guardarProductosCarrito(productos_carrito);
+   actualizarProductosCarrito();
 }
 
-// Defino el array "Carrito"
-
-var carritoDeCompras = []; 
+guardarProductosLs(productosTodos);
+actualizarProductosCarrito();
+renderProductos();

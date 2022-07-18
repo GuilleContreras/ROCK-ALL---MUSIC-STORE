@@ -1,24 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam&family=Roboto:ital,wght@1,900&display=swap');
 *{
     margin: 0;
     padding: 0;
 }
-.logoPng{
-    width: 200px;
-    padding: 20px;
+
+.navbar-brand{
+    font-size: 25px;
+    font-family: 'Kalam', cursive;
 }
 
-h1{
-    font-size: 30px;
+.nav-link{
+    font-family: 'Roboto', sans-serif;
 }
 
-h2{
-    font-size: 20px;
-}
-
-main{
-    padding: 10px;
-}
-
-.form-control{
-    width: 400px;
+.linea1{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 0;
+    margin: 0;
 }
