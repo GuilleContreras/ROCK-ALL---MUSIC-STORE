@@ -37,7 +37,7 @@ console.log(productosTodos)
         contenido +=`<div class="col-md-4 p-2">
         <div class="card p-2">
         <img src="assets/img/${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
-        <div class="card-body">
+        <div class="card-body bg-light">
           <h5 class="card-title text-center">${producto.nombre}</h5>
           <p class="card-text text-center">$${producto.precio}</p>
           <p class="card-text text-center"><a href="#" class="btn btn-dark" onclick="agregarCarrito(${producto.id})" title="Agregar al Carrito">Agregar</a></p>
