@@ -12,9 +12,6 @@ const productosTodos = [
     {id:9, nombre:"Vintage Sonor VT16", precio:545000,descripcion: "Bateria Vintage Sonor VT16 THREE20", categoria: "Baterías", stock: 10, imagen:"bateria_sonor.png"}
 ];
 
-console.log(productosTodos)
- //Funciones
-
  function obtenerProductosLs() {
     return JSON.parse(localStorage.getItem("productosTodos")) || [];
  }
