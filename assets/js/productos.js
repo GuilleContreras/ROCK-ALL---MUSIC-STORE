@@ -12,9 +12,6 @@ const productosTodos = [
     {id:9, nombre:"Vintage Sonor VT16", precio:545000,descripcion: "Bateria Vintage Sonor VT16 THREE20", categoria: "Baterías", stock: 10, imagen:"bateria_sonor.png"}
 ];
 
-console.log(productosTodos)
- //Funciones
-
  function obtenerProductosLs() {
     return JSON.parse(localStorage.getItem("productosTodos")) || [];
  }
@@ -37,7 +34,7 @@ console.log(productosTodos)
         contenido +=`<div class="col-md-4 p-2">
         <div class="card p-2">
         <img src="assets/img/${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
-        <div class="card-body">
+        <div class="card-body bg-light">
           <h5 class="card-title text-center">${producto.nombre}</h5>
           <p class="card-text text-center">$${producto.precio}</p>
           <p class="card-text text-center"><a href="#" class="btn btn-dark" onclick="agregarCarrito(${producto.id})" title="Agregar al Carrito">Agregar</a></p>

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kalam&family=Roboto:ital,wght@1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam&family=Raleway:wght@800&family=Roboto:ital,wght@1,900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -7,17 +9,22 @@
 
 .navbar-brand{
     font-size: 25px;
-    font-family: 'Kalam', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 
 .nav-link{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .linea1{
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     text-align: center;
     padding: 0;
     margin: 0;
+}
+
+.linea1p{
+    margin: 0;
+    padding: 0;
 }

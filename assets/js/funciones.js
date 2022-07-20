@@ -25,3 +25,9 @@ function obtenerProductosCarrito() {
   document.getElementById("botonCarrito").innerHTML = contenido;
 
 }
+
+function vaciarCarrito() {
+  localStorage.removeItem("carritoDeCompras");
+  actualizarProductosCarrito();
+  renderProductosCarrito();
+}
