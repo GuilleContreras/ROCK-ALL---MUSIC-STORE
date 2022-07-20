@@ -1,11 +1,10 @@
 function renderProductosCarrito() {
     let productos = obtenerProductosCarrito();
     let sumaTotal = "";
-    let ivaTotal = "";
-    let totalSinIva = "";
     let tablaSumatoria = "";
 
-    let contenido = `<table class="table">`;
+    let contenido = `<p class="text-end"><a href="#" class="btn btn-danger text-white" onclick="vaciarCarrito()" title="Vaciar Carrito">Vaciar Carrito<img src="assets/img/trash.png"></a></p>
+    <table class="table">`;
 
     for (let producto of productos){
         contenido +=`<tr class="p-3">
@@ -19,6 +18,8 @@ function renderProductosCarrito() {
     }
     
     contenido += `</table>`
+
+    let mensajeTabla = sumaTotal <= 0 ? "Agregá Productos" : ""
 
     tablaSumatoria = `<table class="table ">
     <thead>
@@ -35,15 +36,17 @@ function renderProductosCarrito() {
         <td>$${(sumaTotal*0.79).toFixed(2)}</td>
         <td>$${(sumaTotal*0.21).toFixed(2)}</td>
         <td>$${sumaTotal}</td>
+        <td>${mensajeTabla}</td>
       </tr>
       
     </tbody>
-  </table>`
+    </table>`
 
-    console.log(sumaTotal);
+    
 
     document.getElementById("productos_carrito").innerHTML=tablaSumatoria;
     document.getElementById("totales_carrito").innerHTML=contenido;
 
  }
+ 
  renderProductosCarrito();
