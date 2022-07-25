@@ -27,6 +27,8 @@ const productosTodos = [
 }
 
  function renderProductos() {
+
+   
     let productos = obtenerProductosLs();
     let contenido = "";
 
@@ -37,14 +39,29 @@ const productosTodos = [
         <div class="card-body bg-light">
           <h5 class="card-title text-center">${producto.nombre}</h5>
           <p class="card-text text-center">$${producto.precio}</p>
-          <p class="card-text text-center"><a href="#" class="btn btn-dark" onclick="agregarCarrito(${producto.id})" title="Agregar al Carrito">Agregar</a></p>
+          <p class="card-text text-center"><a href="#" class="btn btn-dark" id="btnShop${producto.id}" onclick="agregarCarrito(${producto.id})" title="Agregar al Carrito">Agregar</a></p>
          </div>
          </div>
          </div>`
+         
+         
     }
+    
     document.getElementById("productos").innerHTML=contenido;
 
+    document.getElementById("btnShop1").addEventListener("click", agregadoCarritoMsj);
+    document.getElementById("btnShop2").addEventListener("click", agregadoCarritoMsj);
+    document.getElementById("btnShop3").addEventListener("click", agregadoCarritoMsj);
+    document.getElementById("btnShop4").addEventListener("click", agregadoCarritoMsj);
+    document.getElementById("btnShop5").addEventListener("click", agregadoCarritoMsj);
+    document.getElementById("btnShop6").addEventListener("click", agregadoCarritoMsj);
+    document.getElementById("btnShop7").addEventListener("click", agregadoCarritoMsj);
+    document.getElementById("btnShop8").addEventListener("click", agregadoCarritoMsj);
+    document.getElementById("btnShop9").addEventListener("click", agregadoCarritoMsj);
+
  }
+
+
 
  
 function agregarCarrito (id) {
@@ -58,4 +75,11 @@ function agregarCarrito (id) {
 
 guardarProductosLs(productosTodos);
 actualizarProductosCarrito();
-renderProductos();
+
+if (document.getElementById("productos") !== null) {
+
+   renderProductos();
+ 
+ }
+
+

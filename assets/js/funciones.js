@@ -31,3 +31,4 @@ function vaciarCarrito() {
   actualizarProductosCarrito();
   renderProductosCarrito();
 }
+
