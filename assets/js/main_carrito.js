@@ -3,7 +3,7 @@ function renderProductosCarrito() {
     let sumaTotal = "";
     let tablaSumatoria = "";
 
-    let contenido = `<p class="text-end"><a href="#" class="btn btn-danger text-white" onclick="vaciarCarrito()" title="Vaciar Carrito">Vaciar Carrito<img src="assets/img/trash.png"></a></p>
+    let contenido = `<p class="text-end"><a href="#" id="vaciarCarrito" class="btn btn-danger text-white" onclick="vaciarCarrito()" title="Vaciar Carrito">Vaciar Carrito<img src="assets/img/trash.png"></a></p>
     <table class="table">`;
 
     for (let producto of productos){
@@ -46,7 +46,10 @@ function renderProductosCarrito() {
 
     document.getElementById("productos_carrito").innerHTML=tablaSumatoria;
     document.getElementById("totales_carrito").innerHTML=contenido;
+    document.getElementById("vaciarCarrito").addEventListener("click", carritoBorrado)
 
  }
+ 
+
  
  renderProductosCarrito();
