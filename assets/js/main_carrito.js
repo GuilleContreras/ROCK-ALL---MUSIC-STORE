@@ -12,7 +12,7 @@ function renderProductosCarrito() {
         <td class="align-middle">${producto.nombre}</td>
         <td class="align-middle">$${producto.precio}</td>
         <td class="align-middle">${producto.nombre}</td>
-        <td class="text-end"><a href="#" class="btn btn-light"><img src="assets/img/trash.png"></a></td>
+        <td class="text-end"><a href="#" class="btn btn-light"><img src="assets/img/trash.png" onClick=removerProducto(${producto.id})></a></td>
         </tr>`
         sumaTotal = productos.map(item => item.precio).reduce((prev, curr) => prev + curr, 0);
     }
@@ -36,14 +36,12 @@ function renderProductosCarrito() {
         <td>$${(sumaTotal*0.79).toFixed(2)}</td>
         <td>$${(sumaTotal*0.21).toFixed(2)}</td>
         <td>$${sumaTotal}</td>
-        <td>${mensajeTabla}</td>
+        <td class="msjTabla">${mensajeTabla}</td>
       </tr>
       
     </tbody>
     </table>`
-
-    
-
+ 
     document.getElementById("productos_carrito").innerHTML=tablaSumatoria;
     document.getElementById("totales_carrito").innerHTML=contenido;
     document.getElementById("vaciarCarrito").addEventListener("click", carritoBorrado)
