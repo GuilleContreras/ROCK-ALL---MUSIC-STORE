@@ -6,6 +6,41 @@ function obtenerProductosCarrito() {
     localStorage.setItem("carritoDeCompras", JSON.stringify(productosTodos));
  }
  
+ function removerProducto (id) {
+  let productos_carrito = obtenerProductosCarrito();
+  let producto = buscarProducto(id);
+  let posicion = productos_carrito.findIndex(x => x.id == id);
+  productos_carrito[posicion].cantidad -=1;
+  
+  
+Swal
+.fire({
+    title: "¿Estás seguro que deseas eliminar el producto?",
+    //text: "¿Eliminar?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar",
+    confirmButtonColor: '#1F76B2'
+})
+.then(resultado => {
+    if (resultado.value) {
+      if (productos_carrito[posicion].cantidad == 0){
+        productos_carrito.splice(posicion, 1)
+      }
+      guardarProductosCarrito(productos_carrito);
+      actualizarProductosCarrito();
+      renderProductosCarrito();
+    } else {
+        // Dijeron que no
+        console.log("*NO se elimina la venta*");
+    }
+});
+  
+  
+ }
+
+
  function actualizarProductosCarrito() {
   let productos = obtenerProductosCarrito();
   let contenido = `<button type="button" class="btn btn-primary position-relative">
