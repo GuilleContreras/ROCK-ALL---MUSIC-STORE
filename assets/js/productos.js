@@ -5,16 +5,15 @@ const productosTodos = [];
 fetch(`assets/js/instrumentos.json`)
 .then(response => response.json())
 .then(data => {
+
    data.forEach(elemento => {
    productosTodos.push(elemento);
    
    })
-   console.log(productosTodos);
-   console.log(typeof productosTodos)
+   guardarProductosLs(productosTodos);
 })
 
-console.log(productosTodos);
-console.log(typeof productosTodos)
+
 
 // const productosTodos = [
 //     {id:1, nombre:"Fender Stratocaster 70s", precio:545000, descripcion: "Guitarra Fender 70s Stratocaster", categoria: "Guitarras", stock: 10, imagen:"fender_stratocaster70s.png"},
@@ -77,8 +76,6 @@ console.log(typeof productosTodos)
  }
 
 
-
- 
 function agregarCarrito (id) {
    let producto = buscarProducto(id);
    let productos_carrito = obtenerProductosCarrito();
@@ -88,7 +85,7 @@ function agregarCarrito (id) {
    actualizarProductosCarrito();
 }
 
-guardarProductosLs(productosTodos);
+
 actualizarProductosCarrito();
 
 if (document.getElementById("productos") !== null) {
