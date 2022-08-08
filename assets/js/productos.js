@@ -1,4 +1,4 @@
-//Declaración de array de productos
+//Fetch de JSON "instrumentos.json"
 
 const productosTodos = [];
 
@@ -26,7 +26,7 @@ fetch(`assets/js/instrumentos.json`)
 //     {id:8, nombre:"Gretsch Catalina Maple", precio:463745,descripcion: "Batería De 5 Cuerpos Gretsch Catalina Maple", categoria: "Baterías", stock: 10, imagen:"bateria_gretsch.png"},
 //     {id:9, nombre:"Vintage Sonor VT16", precio:545000,descripcion: "Bateria Vintage Sonor VT16 THREE20", categoria: "Baterías", stock: 10, imagen:"bateria_sonor.png"}
 // ];
-// console.log(productosTodos);
+
 
  function obtenerProductosLs() {
     return JSON.parse(localStorage.getItem("productosTodos")) || [];
@@ -43,9 +43,9 @@ fetch(`assets/js/instrumentos.json`)
 }
 
  function renderProductos() {
-
-   
-    let productos = obtenerProductosLs();
+    let catGuittarras = document.getElementById("btnCategoria1");
+    catGuittarras.addEventListener("click", function(){
+    let productos = obtenerProductosLs().filter(producto => producto.categoria == "Guitarras");
     let contenido = "";
 
     for (let producto of productos){
@@ -62,18 +62,61 @@ fetch(`assets/js/instrumentos.json`)
     }
     
     document.getElementById("productos").innerHTML=contenido;
-
     document.getElementById("btnShop1").addEventListener("click", agregadoCarritoMsj);
     document.getElementById("btnShop2").addEventListener("click", agregadoCarritoMsj);
     document.getElementById("btnShop3").addEventListener("click", agregadoCarritoMsj);
+    })
+
+    let catBajos = document.getElementById("btnCategoria2");
+    catBajos.addEventListener("click", function(){
+    let productos = obtenerProductosLs().filter(producto => producto.categoria == "Bajos");
+    let contenido = "";
+
+    for (let producto of productos){
+        contenido +=`<div class="col-md-4 p-2">
+        <div class="card p-2">
+        <img src="assets/img/${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+        <div class="card-body bg-light">
+          <h5 class="card-title text-center">${producto.nombre}</h5>
+          <p class="card-text text-center">$${producto.precio}</p>
+          <p class="card-text text-center"><a class="btn btn-dark" id="btnShop${producto.id}" onclick="agregarCarrito(${producto.id})" title="Agregar al Carrito">Agregar</a></p>
+         </div>
+         </div>
+         </div>`
+    }
+    
+    document.getElementById("productos").innerHTML=contenido;
     document.getElementById("btnShop4").addEventListener("click", agregadoCarritoMsj);
     document.getElementById("btnShop5").addEventListener("click", agregadoCarritoMsj);
     document.getElementById("btnShop6").addEventListener("click", agregadoCarritoMsj);
+    })
+    
+    let catBaterias = document.getElementById("btnCategoria3");
+    catBaterias.addEventListener("click", function(){
+    let productos = obtenerProductosLs().filter(producto => producto.categoria == "Baterías");
+    let contenido = "";
+
+    for (let producto of productos){
+        contenido +=`<div class="col-md-4 p-2">
+        <div class="card p-2">
+        <img src="assets/img/${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+        <div class="card-body bg-light">
+          <h5 class="card-title text-center">${producto.nombre}</h5>
+          <p class="card-text text-center">$${producto.precio}</p>
+          <p class="card-text text-center"><a class="btn btn-dark" id="btnShop${producto.id}" onclick="agregarCarrito(${producto.id})" title="Agregar al Carrito">Agregar</a></p>
+         </div>
+         </div>
+         </div>`
+    }
+    
+    document.getElementById("productos").innerHTML=contenido;
     document.getElementById("btnShop7").addEventListener("click", agregadoCarritoMsj);
     document.getElementById("btnShop8").addEventListener("click", agregadoCarritoMsj);
     document.getElementById("btnShop9").addEventListener("click", agregadoCarritoMsj);
 
- }
+    })
+
+   }
 
 
 function agregarCarrito (id) {
