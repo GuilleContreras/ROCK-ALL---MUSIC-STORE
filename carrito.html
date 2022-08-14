@@ -37,11 +37,47 @@
       
     
     <main class="mt-5">
-      <h1 class="text-center">Tus Productos Seleccionados</h1>
-    <div class="container">
-        <div class="row py-3 text-center" id="productos_carrito" title="Ver Carrito"></div>
-        <div class="row py-3 text-center" id="totales_carrito" title="Ver Carrito"></div>
-    </div>
+      <h1 class="text-center" id="productSelect">Tus Productos Seleccionados</h1>
+      <div class="ms-5" id="contenedorBotonFinal">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Finalizar Compra
+        </button>
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Completá tus datos para finalizar la compra!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Nombre y Apellido</label>
+                  <input type="text" class="form-control" id="nombreCliente">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="mailCliente" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Dirección de entrega</label>
+                  <input type="text" class="form-control" id="direccionCliente">
+                </div>
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="botonFinal" data-bs-dismiss="modal">Enviar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container" id="contenedorCarrito">
+          <div class="row py-3 text-center" id="productos_carrito" title="Ver Carrito"></div>
+          <div class="row py-3 text-center" id="totales_carrito" title="Ver Carrito"></div>
+      </div>
     </main>
 
     <!-- Footer -->
